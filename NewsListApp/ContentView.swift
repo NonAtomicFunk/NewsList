@@ -10,13 +10,17 @@ import CoreData
 
 struct ContentView: View {
     @Environment(\.managedObjectContext) private var viewContext
+    private var viewModel = ContentViewViewModel()
 
     @FetchRequest(
         sortDescriptors: [NSSortDescriptor(keyPath: \Item.timestamp, ascending: true)],
         animation: .default)
     private var items: FetchedResults<Item>
 
+    
+    
     var body: some View {
+        
         NavigationView {
             List {
                 ForEach(items) { item in
@@ -27,6 +31,10 @@ struct ContentView: View {
                     }
                 }
                 .onDelete(perform: deleteItems)
+            }.onAppear {
+                Task {
+                    RestToCoreDataService().getRest()
+                }
             }
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {

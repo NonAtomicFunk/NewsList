@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "60C7CB9A-9E7F-4915-B4D4-AD77DC317A59"
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "88989E07-E065-49BC-9495-FFDECD8BFCB9"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "NewsListApp/Helpers/RestToCoreDataService.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "26"
+            endingLineNumber = "26"
+            landmarkName = "getRest()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "88989E07-E065-49BC-9495-FFDECD8BFCB9 - 21f3ed6da637359e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 @Sendable (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in NewsListApp.RestToCoreDataService.getRest() -&gt; ()"
+                  moduleName = "NewsListApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/atomic/git/tests/NewsListApp/NewsListApp/Helpers/RestToCoreDataService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "26"
+                  endingLineNumber = "26"
+                  offsetFromSymbolStart = "2013">
+               </Location>
+               <Location
+                  uuid = "88989E07-E065-49BC-9495-FFDECD8BFCB9 - 21f3ed6da637359e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 @Sendable (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in NewsListApp.RestToCoreDataService.getRest() -&gt; ()"
+                  moduleName = "NewsListApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/atomic/git/tests/NewsListApp/NewsListApp/Helpers/RestToCoreDataService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "26"
+                  endingLineNumber = "26"
+                  offsetFromSymbolStart = "2526">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "8E20F6AF-2AEF-4C0F-8526-0C2521130B32"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "NewsListApp/Helpers/RestToCoreDataService.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "21"
+            endingLineNumber = "21"
+            landmarkName = "getRest()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "8E20F6AF-2AEF-4C0F-8526-0C2521130B32 - 21f3ed6da6373a43"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 @Sendable (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in NewsListApp.RestToCoreDataService.getRest() -&gt; ()"
+                  moduleName = "NewsListApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/atomic/git/tests/NewsListApp/NewsListApp/Helpers/RestToCoreDataService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "21"
+                  endingLineNumber = "21"
+                  offsetFromSymbolStart = "218">
+               </Location>
+               <Location
+                  uuid = "8E20F6AF-2AEF-4C0F-8526-0C2521130B32 - 21f3ed6da6373a62"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 @Sendable (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in NewsListApp.RestToCoreDataService.getRest() -&gt; ()"
+                  moduleName = "NewsListApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/atomic/git/tests/NewsListApp/NewsListApp/Helpers/RestToCoreDataService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "22"
+                  endingLineNumber = "22"
+                  offsetFromSymbolStart = "1261">
+               </Location>
+               <Location
+                  uuid = "8E20F6AF-2AEF-4C0F-8526-0C2521130B32 - 21f3ed6da6373a62"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 @Sendable (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in NewsListApp.RestToCoreDataService.getRest() -&gt; ()"
+                  moduleName = "NewsListApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/atomic/git/tests/NewsListApp/NewsListApp/Helpers/RestToCoreDataService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "22"
+                  endingLineNumber = "22"
+                  offsetFromSymbolStart = "1232">
+               </Location>
+               <Location
+                  uuid = "8E20F6AF-2AEF-4C0F-8526-0C2521130B32 - 21f3ed6da6373a62"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 @Sendable (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in NewsListApp.RestToCoreDataService.getRest() -&gt; ()"
+                  moduleName = "NewsListApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/atomic/git/tests/NewsListApp/NewsListApp/Helpers/RestToCoreDataService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "22"
+                  endingLineNumber = "22"
+                  offsetFromSymbolStart = "1235">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "86E470FA-D291-4631-8A22-907258797BA1"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "NewsListApp/Helpers/RestToCoreDataService.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "12"
+            endingLineNumber = "12"
+            landmarkName = "getRest()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "86E470FA-D291-4631-8A22-907258797BA1 - a65978bbc574b951"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "NewsListApp.RestToCoreDataService.getRest() -&gt; ()"
+                  moduleName = "NewsListApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/atomic/git/tests/NewsListApp/NewsListApp/Helpers/RestToCoreDataService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "12"
+                  endingLineNumber = "12"
+                  offsetFromSymbolStart = "160">
+               </Location>
+               <Location
+                  uuid = "86E470FA-D291-4631-8A22-907258797BA1 - a65978bbc574b951"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "NewsListApp.RestToCoreDataService.getRest() -&gt; ()"
+                  moduleName = "NewsListApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/atomic/git/tests/NewsListApp/NewsListApp/Helpers/RestToCoreDataService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "12"
+                  endingLineNumber = "12"
+                  offsetFromSymbolStart = "154">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "9DB7D3EC-514A-4193-AD7F-EB1C1E3623F0"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "NewsListApp/Helpers/RestToCoreDataService.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "24"
+            endingLineNumber = "24"
+            landmarkName = "getRest()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>

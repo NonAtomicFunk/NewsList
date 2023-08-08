@@ -6,52 +6,62 @@
 //
 
 import Foundation
-import CoreData
+//import CoreData
 
-@objc(NewsItem)
-public class NewsItem: NSManagedObject, Codable {
-    required convenience public init(from decoder: Decoder) throws {
+//@objc(NewsItem)
+public struct NewsItemArray: Decodable {
+    var totalResults: Int
+    var status: String
+    var newsItems: [NewsItem]
+    
+    public init(from decoder: Decoder) throws {
+        let rootContainer = try decoder.container(keyedBy: MetaCodingKeys.self)
+        
+        totalResults = try rootContainer.decode(Int.self, forKey: .totalResults)
+        status = try rootContainer.decode(String.self, forKey: .status)
 
-        guard let context = decoder.userInfo[.context] as? NSManagedObjectContext else {
-            throw ContextError.NoContextFound
+        newsItems = try rootContainer.decode([NewsItem].self, forKey: .articles)
+        
+        enum MetaCodingKeys: String, CodingKey {
+            case status, totalResults, articles
         }
-        self.init(context: context)
-
-        let values = try decoder.container(keyedBy: CodingKeys.self)
-        id = try values.decode(UUID.self, forKey: .id)
-        name = try values.decode(String.self, forKey: .name)
-        author = try values.decode(String.self, forKey: .author)
-        title = try values.decode(String.self, forKey: .title)
-        description = try values.decode(String.self, forKey: .description)
-        url = try values.decode(String.self, forKey: .url)
-        urlToImage = try values.decode(String.self, forKey: .urlToImage)
-        publishedAt = try values.decode(Date.self, forKey: .publishedAt)
-        content = try values.decode(String.self, forKey: .content)
-    }
-    
-    public func encode(to encoder: Encoder) throws {
-        var values = encoder.container(keyedBy: CodingKeys.self)
-
-        try values.encode(id, forKey: .id)
-        try values.encode(name, forKey: .name)
-        try values.encode(author, forKey: .author)
-        try values.encode(title, forKey: .title)
-        try values.encode(description, forKey: .description)
-        try values.encode(url, forKey: .url)
-        try values.encode(urlToImage, forKey: .urlToImage)
-        try values.encode(publishedAt, forKey: .publishedAt)
-        try values.encode(content, forKey: .content)
-    }
-    
-    enum CodingKeys: CodingKey {
-        case id, name, author, title, description, url, urlToImage, publishedAt, content
     }
 }
 
-extension CodingUserInfoKey {
-    static let context = CodingUserInfoKey(rawValue: "managedObjectContext")!
+public struct NewsItem: Decodable {//NSManagedObject, Codable {
+    public var id: UUID?
+    public var name: String?
+    public var author: String?
+    public var title: String?
+    public var description: String
+    public var url: String?
+    public var urlToImage: String?
+    public var publishedAt: String?
+    public var content: String?
+
+    public init(from decoder: Decoder) throws {
+
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+
+        author = try? values.decode(String.self, forKey: .author)
+        title = try? values.decode(String.self, forKey: .title)
+        description = try values.decode(String.self, forKey: .description)
+        url = try? values.decode(String.self, forKey: .url)
+        urlToImage = try? values.decode(String.self, forKey: .urlToImage)
+        publishedAt = try? values.decode(String.self, forKey: .publishedAt)
+        content = try? values.decode(String.self, forKey: .content)
+    }
+    
+    enum CodingKeys: String, CodingKey {
+        case source, id, name, author, title, description, url, urlToImage, publishedAt, content
+    }
 }
 
 enum ContextError: Error {
     case NoContextFound
+}
+
+struct MetaData: Decodable {
+    var id: UUID?
+    var name: String
 }

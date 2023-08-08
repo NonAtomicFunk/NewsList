@@ -35,6 +35,7 @@ struct DynamicFilteredView<Content: View,T>: View where T: NSManagedObject {
     }
 }
 
+
 struct DynamicFilteredSearchView<Content: View,T>: View where T: NSManagedObject {
     // MARK: Core Data Request
     @FetchRequest var request: FetchedResults<T>

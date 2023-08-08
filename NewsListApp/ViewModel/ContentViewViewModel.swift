@@ -1,5 +1,5 @@
 //
-//  RestToCoreDataService.swift
+//  ContentViewViewModel.swift
 //  NewsListApp
 //
 //  Created by Alexander Berezovsky on 08.08.2023.
@@ -7,8 +7,10 @@
 
 import Foundation
 
-class RestToCoreDataService {
-    func getRest() { //-> [NewsItem] {//        var modelsArray: [NewsItem] = []
+class ContentViewViewModel: ObservableObject {
+//    private var cancellable: AnyCancellable?
+    
+    func getRest() async throws {
         let urlRequest = URLRequest(url: URL(string: Constants.baseURLString)!)
         let dataTask = URLSession.shared.dataTask(with: urlRequest) { (data, response, error) in
             if let error = error {
@@ -19,11 +21,10 @@ class RestToCoreDataService {
             guard (response as? HTTPURLResponse)?.statusCode == 200 else { return }
             guard let data = data else { return }
             do {
-                let models = try JSONDecoder().decode(NewsItemArray.self, from: data)
-                
-                print("totalResults", models.totalResults, "MODELS: ", models.newsItems.count)
+                let decodedFood = try JSONDecoder().decode(NewsItem.self, from: data)
+                print("Completion handler decodedFood", decodedFood)
             } catch {
-                print("!!!! Error decoding", error)
+                print("Error decoding", error)
             }
         }
         
