@@ -28,7 +28,7 @@ public struct NewsItemArray: Decodable {
     }
 }
 
-public struct NewsItem: Decodable {//NSManagedObject, Codable {
+public struct NewsItem: Decodable, Identifiable {//NSManagedObject, Codable {
     public var id: UUID?
     public var name: String?
     public var author: String?
@@ -50,6 +50,7 @@ public struct NewsItem: Decodable {//NSManagedObject, Codable {
         urlToImage = try? values.decode(String.self, forKey: .urlToImage)
         publishedAt = try? values.decode(String.self, forKey: .publishedAt)
         content = try? values.decode(String.self, forKey: .content)
+        id = UUID()
     }
     
     enum CodingKeys: String, CodingKey {
