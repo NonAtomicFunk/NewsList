@@ -9,7 +9,7 @@ import Foundation
 
 public struct NewsItem: Decodable, Identifiable {
     public var id: UUID?
-    public var name: String?
+    public var sourceName: String?
     public var author: String?
     public var title: String?
     public var description: String
@@ -17,6 +17,7 @@ public struct NewsItem: Decodable, Identifiable {
     public var urlToImage: String?
     public var publishedAt: Date?
     public var content: String?
+//    public var source: SourceMaterial?
 
     public init(from decoder: Decoder) throws {
 
@@ -29,6 +30,11 @@ public struct NewsItem: Decodable, Identifiable {
         urlToImage = try? values.decode(String.self, forKey: .urlToImage)
         publishedAt = converDate(from: try? values.decode(String.self, forKey: .publishedAt))
         content = try? values.decode(String.self, forKey: .content)
+        let source = try values.decode(SourceMaterial.self, forKey: .source)
+        sourceName = source.name
+//        let sourceContainer = try values.nestedUnkeyedContainer(forKey: .source)
+        
+//        sourceName = try? sourceContainer.decode(String.self, forKey: .name)
         id = UUID()
     }
     

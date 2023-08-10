@@ -40,22 +40,16 @@ struct ContentView: View {
                 
                 NavigationLink {
                     VStack{
-//                        Image
+
                         Text(item.title!)
+//                        Image urlToImage
                         Text(item.description)
                         Spacer()
+                        Text("Source: \(item.sourceName!)")
                         Text("written by: \(item.author ?? "")")
                         Text(self.viewModel.readDate(from: item.publishedAt))
-                        
-                        
-                        //          //image, title,
-                        //    //          description, author, source, published at)
                     }
                     
-                    
-//                    DetailesView(dismiss: .,
-//                                 viewModel: DetailesViewModel(newsItem: item),
-//                                 onAddWord: <#T##(String) -> Void#>)
                 } label: {
 //                    VStack {
                         Text(item.title ?? "")
