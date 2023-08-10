@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-//import Combine
 
 class ContentViewViewModel: ObservableObject {
     @Published var newsItems = [NewsItem]()

@@ -63,7 +63,7 @@ struct ContentView: View {
                     
                 } label: {
                         Text(item.title ?? "")
-                }.searchable(text: $searchedText, placement: .navigationBarDrawer(displayMode: .automatic))
+                }.searchable(text: $searchedText, placement: .navigationBarDrawer(displayMode: .always))
                     .onChange(of: searchedText.lowercased()) { newValue in
                         
                         self.viewModel.filteredNewsItems = self.viewModel.newsItems.filter({ $0.title!.lowercased()
