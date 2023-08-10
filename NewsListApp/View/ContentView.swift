@@ -42,6 +42,7 @@ struct ContentView: View {
                     VStack{
 
                         Text(item.title!)
+                            .padding(16)
                         AsyncImage(
                             url: URL(string: item.urlToImage ?? ""),
                             content: { image in
@@ -62,7 +63,7 @@ struct ContentView: View {
                     }
                     
                 } label: {
-                        Text(item.title ?? "")
+                    Text(item.title ?? "")
                 }.searchable(text: $searchedText, placement: .navigationBarDrawer(displayMode: .always))
                     .onChange(of: searchedText.lowercased()) { newValue in
                         
