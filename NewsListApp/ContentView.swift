@@ -12,6 +12,7 @@ import Combine
 struct ContentView: View {
 //    @Environment(\.managedObjectContext) private var viewContext
     @StateObject private var viewModel = ContentViewViewModel()
+    @State private var searchedText: String = ""
 
     @FetchRequest(
         sortDescriptors: [NSSortDescriptor(keyPath: \Item.timestamp, ascending: true)],
@@ -31,13 +32,22 @@ struct ContentView: View {
     var body: some View {
 
         NavigationView {
-            List(viewModel.newsItems) { item in
-//                ForEach(viewModel.newsItems) { item in
-                    NavigationLink {
+            List(viewModel.filteredNewsItems/*newsItems*/) { item in
+                
+                NavigationLink {
 //                        Text("Items")
-                    } label: {
-                        Text(item.title ?? "")
+                } label: {
+                    Text(item.title ?? "")
+                }.searchable(text: $searchedText)
+                    .onChange(of: searchedText.lowercased()) { newValue in
+                        self.viewModel.filteredNewsItems = self.viewModel.newsItems.filter({ $0.title!.lowercased()
+                            
+                            .contains(newValue.lowercased())})
+//                            starts(with: newValue)})
                     }
+//                    .onChange(of: searchedText) X { search Ways in
+//                        self.viewModel.filteredNewsItems = self.viewModel.newsItems.filter({ $0.name.starts(with: search)})
+//                    }
 //                }
 //                .onDelete(perform: deleteItems)
             }.onAppear {
@@ -49,17 +59,22 @@ struct ContentView: View {
 //                ToolbarItem(placement: .navigationBarTrailing) {
 //                    EditButton()
 //                }
-//                ToolbarItem {
-//                    Button(action: addItem) {
-//                        Label("Add Item", systemImage: "plus")
-//                    }
-//                }
+                ToolbarItem {
+                    Button {
+                        print("PIU")
+                    } label: {
+                        Text("Search Filters")
+                            .padding()
+                            .foregroundColor(.white)
+//                            .background(.red)
+                    }
+                }
             }
             Text("Select an item")
         }
     }
 
-//    private func addItem() {
+    private func addItem() {
 //        withAnimation {
 //            let newItem = Item(context: viewContext)
 //            newItem.timestamp = Date()
@@ -73,7 +88,7 @@ struct ContentView: View {
 //                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
 //            }
 //        }
-//    }
+    }
 
 //    private func deleteItems(offsets: IndexSet) {
 //        withAnimation {
