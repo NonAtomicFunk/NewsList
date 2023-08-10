@@ -42,8 +42,19 @@ struct ContentView: View {
                     VStack{
 
                         Text(item.title!)
-//                        Image urlToImage
+                        AsyncImage(
+                            url: URL(string: item.urlToImage ?? ""),
+                            content: { image in
+                                image.resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                    .frame(maxWidth: 300, maxHeight: 300)
+                                    .cornerRadius(10)
+                            },
+                            placeholder: {
+                                ProgressView()}
+                        )
                         Text(item.description)
+                            .padding(16)
                         Spacer()
                         Text("Source: \(item.sourceName!)")
                         Text("written by: \(item.author ?? "")")
@@ -51,10 +62,7 @@ struct ContentView: View {
                     }
                     
                 } label: {
-//                    VStack {
                         Text(item.title ?? "")
-//                        Text(item.description ?? "")
-//                    }
                 }.searchable(text: $searchedText, placement: .navigationBarDrawer(displayMode: .automatic))
                     .onChange(of: searchedText.lowercased()) { newValue in
                         
