@@ -17,7 +17,6 @@ public struct NewsItem: Decodable, Identifiable {
     public var urlToImage: String?
     public var publishedAt: Date?
     public var content: String?
-//    public var source: SourceMaterial?
 
     public init(from decoder: Decoder) throws {
 
@@ -32,9 +31,6 @@ public struct NewsItem: Decodable, Identifiable {
         content = try? values.decode(String.self, forKey: .content)
         let source = try values.decode(SourceMaterial.self, forKey: .source)
         sourceName = source.name
-//        let sourceContainer = try values.nestedUnkeyedContainer(forKey: .source)
-        
-//        sourceName = try? sourceContainer.decode(String.self, forKey: .name)
         id = UUID()
     }
     
