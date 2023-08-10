@@ -33,8 +33,10 @@ struct ContentView: View {
     var body: some View {
 
         DatePicker("", selection: $selectedDate, displayedComponents: .date)
-            
-            Spacer()
+            .padding(EdgeInsets(top: 16,
+                                leading: 8,
+                                bottom: 0,
+                                trailing: 20))
         NavigationView {
             List(viewModel.filteredNewsItems/*newsItems*/) { item in
                 

@@ -36,7 +36,7 @@ public struct NewsItem: Decodable, Identifiable {//NSManagedObject, Codable {
     public var description: String
     public var url: String?
     public var urlToImage: String?
-    public var publishedAt: String?
+    public var publishedAt: Date?
     public var content: String?
 
     public init(from decoder: Decoder) throws {
@@ -48,13 +48,26 @@ public struct NewsItem: Decodable, Identifiable {//NSManagedObject, Codable {
         description = try values.decode(String.self, forKey: .description)
         url = try? values.decode(String.self, forKey: .url)
         urlToImage = try? values.decode(String.self, forKey: .urlToImage)
-        publishedAt = try? values.decode(String.self, forKey: .publishedAt)
+        publishedAt = converDate(from: try? values.decode(String.self, forKey: .publishedAt))
         content = try? values.decode(String.self, forKey: .content)
         id = UUID()
     }
     
     enum CodingKeys: String, CodingKey {
         case source, id, name, author, title, description, url, urlToImage, publishedAt, content
+    }
+    
+    private func converDate(from string: String? ) -> Date {
+        var date = Date()
+        guard string != nil else {
+            return date
+        }
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+        
+        date = dateFormatter.date(from: string!)!
+        return date
     }
 }
 
