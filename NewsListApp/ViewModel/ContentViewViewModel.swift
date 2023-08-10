@@ -33,4 +33,13 @@ class ContentViewViewModel: ObservableObject {
 
         dataTask.resume()
     }
+    
+    func readDate(from itemDate: Date?) -> String {
+        guard itemDate != nil else {
+            return ""
+        }
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "YY/MM/dd"
+        return dateFormatter.string(from: itemDate!)
+    }
 }

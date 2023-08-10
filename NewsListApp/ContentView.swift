@@ -20,26 +20,42 @@ struct ContentView: View {
     
     var body: some View {
 
-        DatePicker("Sort up to this date:", selection: $selectedDate, displayedComponents: .date)
-            .padding(EdgeInsets(top: 16,
-                                leading: 20,
-                                bottom: 0,
-                                trailing: 20))
-            .onChange(of: selectedDate) { newValue in
-                self.viewModel.filteredNewsItems = self.viewModel.newsItems
-                    .filter({ $0.publishedAt! <= selectedDate
-                    })
-                if !(self.searchedText.isEmpty) {
-                    self.viewModel.filteredNewsItems = self.viewModel.filteredNewsItems.filter({ $0.title!.lowercased()
-                        .contains(searchedText.lowercased())})
-                }
-            }
         NavigationView {
+            VStack {
+            DatePicker("Sort up to this date:", selection: $selectedDate, displayedComponents: .date)
+                .padding(EdgeInsets(top: 16,
+                                    leading: 20,
+                                    bottom: 0,
+                                    trailing: 20))
+                .onChange(of: selectedDate) { newValue in
+                    self.viewModel.filteredNewsItems = self.viewModel.newsItems
+                        .filter({ $0.publishedAt! <= selectedDate
+                        })
+                    if !(self.searchedText.isEmpty) {
+                        self.viewModel.filteredNewsItems = self.viewModel.filteredNewsItems.filter({ $0.title!.lowercased()
+                            .contains(searchedText.lowercased())})
+                    }
+                }
             List(viewModel.filteredNewsItems) { item in
                 
                 NavigationLink {
-//                    Link(<#T##title: StringProtocol##StringProtocol#>, destination: <#T##URL#>)
-//                    ItemRow(item)
+                    VStack{
+//                        Image
+                        Text(item.title!)
+                        Text(item.description)
+                        Spacer()
+                        Text("written by: \(item.author ?? "")")
+                        Text(self.viewModel.readDate(from: item.publishedAt))
+                        
+                        
+                        //          //image, title,
+                        //    //          description, author, source, published at)
+                    }
+                    
+                    
+//                    DetailesView(dismiss: .,
+//                                 viewModel: DetailesViewModel(newsItem: item),
+//                                 onAddWord: <#T##(String) -> Void#>)
                 } label: {
 //                    VStack {
                         Text(item.title ?? "")
@@ -62,7 +78,8 @@ struct ContentView: View {
             }
             .toolbar {
             }
-        }
+            } // << VStack
+        } //<< NavigationView
     }
 }
 
