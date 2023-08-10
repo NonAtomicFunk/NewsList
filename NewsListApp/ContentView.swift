@@ -13,6 +13,7 @@ struct ContentView: View {
 //    @Environment(\.managedObjectContext) private var viewContext
     @StateObject private var viewModel = ContentViewViewModel()
     @State private var searchedText: String = ""
+    @State private var selectedDate = Date()
 
     @FetchRequest(
         sortDescriptors: [NSSortDescriptor(keyPath: \Item.timestamp, ascending: true)],
@@ -31,6 +32,9 @@ struct ContentView: View {
     
     var body: some View {
 
+        DatePicker("", selection: $selectedDate, displayedComponents: .date)
+            
+            Spacer()
         NavigationView {
             List(viewModel.filteredNewsItems/*newsItems*/) { item in
                 
@@ -38,7 +42,7 @@ struct ContentView: View {
 //                        Text("Items")
                 } label: {
                     Text(item.title ?? "")
-                }.searchable(text: $searchedText)
+                }.searchable(text: $searchedText, placement: .navigationBarDrawer(displayMode: .always))
                     .onChange(of: searchedText.lowercased()) { newValue in
                         self.viewModel.filteredNewsItems = self.viewModel.newsItems.filter({ $0.title!.lowercased()
                             
@@ -59,16 +63,16 @@ struct ContentView: View {
 //                ToolbarItem(placement: .navigationBarTrailing) {
 //                    EditButton()
 //                }
-                ToolbarItem {
-                    Button {
-                        print("PIU")
-                    } label: {
-                        Text("Search Filters")
-                            .padding()
-                            .foregroundColor(.white)
-//                            .background(.red)
-                    }
-                }
+//                ToolbarItem {
+//                    Button {
+//                        print("PIU")
+//                    } label: {
+//                        Text("Search Filters")
+//                            .padding()
+//                            .foregroundColor(.white)
+////                            .background(.red)
+//                    }
+//                }
             }
             Text("Select an item")
         }
