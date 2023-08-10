@@ -6,11 +6,9 @@
 //
 
 import SwiftUI
-//import CoreData
 import Combine
 
 struct ContentView: View {
-//    @Environment(\.managedObjectContext) private var viewContext
     @StateObject private var viewModel = ContentViewViewModel()
     @State private var searchedText: String = ""
     @State private var selectedDate = Date()
@@ -19,97 +17,53 @@ struct ContentView: View {
         sortDescriptors: [NSSortDescriptor(keyPath: \Item.timestamp, ascending: true)],
         animation: .default)
     private var items: FetchedResults<Item>
-
-//    var body: some View {
-//        NavigationView {
-//            List {
-//                ForEach(self.viewModel.data) { item in
-//                    Text(item.name!, formatter: itemFormatter)
-//                }
-//            }
-//        }
-//    }
     
     var body: some View {
 
-        DatePicker("", selection: $selectedDate, displayedComponents: .date)
+        DatePicker("Sort up to this date:", selection: $selectedDate, displayedComponents: .date)
             .padding(EdgeInsets(top: 16,
-                                leading: 8,
+                                leading: 20,
                                 bottom: 0,
                                 trailing: 20))
+            .onChange(of: selectedDate) { newValue in
+                self.viewModel.filteredNewsItems = self.viewModel.newsItems
+                    .filter({ $0.publishedAt! <= selectedDate
+                    })
+                if !(self.searchedText.isEmpty) {
+                    self.viewModel.filteredNewsItems = self.viewModel.filteredNewsItems.filter({ $0.title!.lowercased()
+                        .contains(searchedText.lowercased())})
+                }
+            }
         NavigationView {
-            List(viewModel.filteredNewsItems/*newsItems*/) { item in
+            List(viewModel.filteredNewsItems) { item in
                 
                 NavigationLink {
-//                        Text("Items")
+//                    Link(<#T##title: StringProtocol##StringProtocol#>, destination: <#T##URL#>)
+//                    ItemRow(item)
                 } label: {
-                    Text(item.title ?? "")
-                }.searchable(text: $searchedText, placement: .navigationBarDrawer(displayMode: .always))
-                    .onChange(of: searchedText.lowercased()) { newValue in
-                        self.viewModel.filteredNewsItems = self.viewModel.newsItems.filter({ $0.title!.lowercased()
-                            
-                            .contains(newValue.lowercased())})
-//                            starts(with: newValue)})
-                    }
-//                    .onChange(of: searchedText) X { search Ways in
-//                        self.viewModel.filteredNewsItems = self.viewModel.newsItems.filter({ $0.name.starts(with: search)})
+//                    VStack {
+                        Text(item.title ?? "")
+//                        Text(item.description ?? "")
 //                    }
-//                }
-//                .onDelete(perform: deleteItems)
+                }.searchable(text: $searchedText, placement: .navigationBarDrawer(displayMode: .automatic))
+                    .onChange(of: searchedText.lowercased()) { newValue in
+                        
+                        self.viewModel.filteredNewsItems = self.viewModel.newsItems.filter({ $0.title!.lowercased()
+                            .contains(newValue.lowercased())})
+                        
+                        self.viewModel.filteredNewsItems = self.viewModel.filteredNewsItems
+                            .filter({
+                                $0.publishedAt! <= selectedDate
+                                
+                            })
+                    }
             }.onAppear {
-//                Task {
                     viewModel.getRest()
-//                }
             }
             .toolbar {
-//                ToolbarItem(placement: .navigationBarTrailing) {
-//                    EditButton()
-//                }
-//                ToolbarItem {
-//                    Button {
-//                        print("PIU")
-//                    } label: {
-//                        Text("Search Filters")
-//                            .padding()
-//                            .foregroundColor(.white)
-////                            .background(.red)
-//                    }
-//                }
             }
-            Text("Select an item")
         }
     }
-
-    private func addItem() {
-//        withAnimation {
-//            let newItem = Item(context: viewContext)
-//            newItem.timestamp = Date()
-//
-//            do {
-//                try viewContext.save()
-//            } catch {
-//                // Replace this implementation with code to handle the error appropriately.
-//                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-//                let nsError = error as NSError
-//                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
-//            }
-//        }
-    }
-
-//    private func deleteItems(offsets: IndexSet) {
-//        withAnimation {
-//            offsets.map { items[$0] }.forEach(viewContext.delete)
-//
-//            do {
-//                try viewContext.save()
-//            } catch {
-//                // Replace this implementation with code to handle the error appropriately.
-//                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-//                let nsError = error as NSError
-//                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
-//            }
-//        }
-//    }
 }
 
 private let itemFormatter: DateFormatter = {
